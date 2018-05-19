@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+{% include head.html %}
+<body>
+  <!--========== HEADER ==========-->
+  <header class="header_area">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Logo Area Start -->
+        <div class="col-12">
+          <div class="logo_area text-center">
+            <a href="{{site.url}}" class="hana-logo">Hanakotoba Blog</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#hanakotoba-nav" aria-controls="hanakotoba-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+            <!-- Menu Area Start -->
+            <div class="collapse navbar-collapse justify-content-center" id="hanakotoba-nav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{site.url}}">Home</a>
+                </li>
+                <!--<li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="hanaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                  <div class="dropdown-menu" aria-labelledby="hanaDropdown">
+                    <a class="dropdown-item" href="index.html">Home</a>
+                    <a class="dropdown-item" href="archive.html">Archive</a>
+                    <a class="dropdown-item" href="single.html">Single Blog</a>
+                    <a class="dropdown-item" href="static.html">Static Page</a>
+                    <a class="dropdown-item" href="contact.html">Contact</a>
+                  </div>
+                </li>-->
+                <li class="nav-item">
+                  <a class="nav-link" href="{{site.url}}/search">Search</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="carousel_area owl-carousel">
+    <!--
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/instagram-img/" | append: "1.jpg" }}" alt="">
+      <div class="hover_overlay">
+        <div class="hana-table">
+          <div class="hana-table-cell">
+            <div class="text-center">
+              <h6>Hello World</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/" | append: "1.jpg" }}" alt="">
+      <!-- Hover -->
+      <div class="hover_overlay">
+      </div>
+    </div>
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/" | append: "2.jpg" }}" alt="">
+      <!-- Hover -->
+      <div class="hover_overlay">
+      </div>
+    </div>
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/" | append: "3.jpg" }}" alt="">
+      <!-- Hover -->
+      <div class="hover_overlay">
+      </div>
+    </div>
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/" | append: "4.jpg" }}" alt="">
+      <!-- Hover -->
+      <div class="hover_overlay">
+      </div>
+    </div>
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/" | append: "5.jpg" }}" alt="">
+      <!-- Hover -->
+      <div class="hover_overlay">
+      </div>
+    </div>
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/" | append: "6.jpg" }}" alt="">
+      <!-- Hover -->
+      <div class="hover_overlay">
+      </div>
+    </div>
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/" | append: "7.jpg" }}" alt="">
+      <!-- Hover -->
+      <div class="hover_overlay">
+      </div>
+    </div>
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/" | append: "8.jpg" }}" alt="">
+      <!-- Hover -->
+      <div class="hover_overlay">
+      </div>
+    </div>
+    <div class="carousel_item">
+      <img src="{{ "/assets/images/" | append: "9.jpg" }}" alt="">
+      <!-- Hover -->
+      <div class="hover_overlay">
+      </div>
+    </div>
+  </div>
+  <!--========== END HEADER ==========-->
+
+  {{content}}
+
+  <a class="m-scroll-to-top js__scroll_to_top" href="#"><i class="fa fa-angle-up"></i></a>
+
+  <script type="text/javascript" src="{{ "/assets/js/jquery.js" }}"></script>
+  <script type="text/javascript" src="{{ "/assets/bootstrap/js/bootstrap.min.js" }}"></script>
+  <script type="text/javascript" src="{{ "/assets/js/owl.carousel.min.js" }}"></script>
+  <script src="{{ "/assets/photoswipe/photoswipe.min.js" }}"></script>
+  <script src="{{ "/assets/photoswipe/photoswipe-ui-default.min.js" }}"></script>
+  {% for js in layout.jsarr %}
+  <script type="text/javascript" src="{{ js }}"></script>
+  {% endfor %}
+  {% for js in page.jsarr %}
+  <script type="text/javascript" src="{{ js }}"></script>
+  {% endfor %}
+
+  <script type="text/javascript" src="{{ "/assets/js/global.js" }}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          var $pswp = $('.pswp')[0];
+          var image = [];
+
+          $('.gallery').each( function() {
+              var $pic     = $(this),
+                  getItems = function() {
+                      var items = [];
+                      $pic.find('img').each(function() {
+                          var $src   = $(this).attr('src'),
+                              $width  = $(this).prop("naturalWidth"),
+                              $height = $(this).prop("naturalHeight");
+
+                          var item = {
+                              src : $src,
+                              w   : $width,
+                              h   : $height
+                          }
+
+                          items.push(item);
+                      });
+                      return items;
+                  };
+
+              var items = getItems();
+
+              $.each(items, function(index, value) {
+                  image[index]     = new Image();
+                  image[index].src = value['src'];
+              });
+
+              $pic.on('click', 'figure', function(event) {
+                  event.preventDefault();
+
+                  var $index = $(this).index();
+                  var options = {
+                      index: $index,
+                      bgOpacity: 0.7,
+                      showHideOpacity: true
+                  };
+
+                  var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+                  lightBox.init();
+              });
+          });
+
+          if (typeof SimpleJekyllSearch != "undefined") {
+              window.simpleJekyllSearch = new SimpleJekyllSearch({
+                  searchInput: document.getElementById('search-input'),
+                  resultsContainer: document.getElementById('results'),
+                  json: '{{site.url}}/search.json',
+                  searchResultTemplate: '<div class="card">\n' +
+                  '                <figure class="effect-oscar">\n' +
+                  '                    <img src="{img}" alt="{title}" class="img-responsive"/>\n' +
+                  '                    <figcaption>\n' +
+                  '                        <h5>{title}</h5>\n' +
+                  '                        <a href="{url}">View more</a>\n' +
+                  '                    </figcaption>\n' +
+                  '                </figure>\n' +
+                  '            </div>',
+                  noResultsText: '<div class="col-12"><h5>No results found</h5></div>',
+                  limit: 10
+              });
+          }
+
+      });
+  </script>
+
+  <footer class="footer_area">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <!-- Copywrite Text -->
+          <div class="copy_right_text text-center">
+            <p>Copyright @2018 All rights reserved</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--========== END FOOTER ==========-->
+</body>
+</html>

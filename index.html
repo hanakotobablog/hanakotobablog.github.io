@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<!--========== PAGE CONTENT ==========-->
+<section class="section_padding_80">
+    <div class="container-fluid">
+        <div class="card-columns">
+            {% for post in paginator.posts %}
+            <div class="card">
+                <figure class="effect-oscar">
+                    <img src="{{ "/assets/images/" | append: post.imgs[0] }}" alt="{{post.title}}" class="img-responsive"/>
+                    <figcaption>
+                        <h5>{{post.title}}</h5>
+                        <a href="{{post.url}}">View more</a>
+                    </figcaption>
+                </figure>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-12 col-lg-8 m-auto">
+            {% include pagination.html %}
+        </div>
+    </div>
+</section>

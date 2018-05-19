@@ -1,0 +1,13 @@
+---
+layout: null
+---
+[
+  {% for post in site.posts %}
+    {
+      "title"    : "{{ post.title | escape }}",
+      "url"      : "{{ site.url }}{{ post.url }}",
+      "date"     : "{{ post.date }}",
+      "img"     : "{{ '/assets/images/' | append: post.imgs[0]}}"
+    } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
