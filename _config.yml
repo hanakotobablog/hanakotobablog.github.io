@@ -2,7 +2,7 @@ title: Welcome to Hanakotoba Blog
 description: > # this means to ignore newlines
   Website where you can find plants information, facts, and photos
 permalink: ':title/'
-url: "https://hanakotoba.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://hanakotobablog.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 site-twitter: #if your site has a twitter account, enter it here
 
 # Author Settings
