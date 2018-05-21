@@ -38,8 +38,10 @@
     <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
     <meta content="{{ site.url }}" property="article:author">
   {% endif %}
-  {% if page.img %}
-    <meta content="{{ site.url }}/assets/images/{{ page.img }}" property="og:image">
+  {% if page.imgs %}
+    {% for img in page.imgs limit:1 %}
+    <meta content="{{ site.url }}/assets/images/{{ img }}" property="og:image">
+    {% endfor %}
   {% else %}
     <meta content="{{ site.url }}/assets/images/{{ site.author-img }}" property="og:image">
   {% endif %}
