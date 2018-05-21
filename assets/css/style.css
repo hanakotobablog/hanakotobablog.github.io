@@ -212,7 +212,7 @@ a:active {
 }
 
 .carousel_item .hover_overlay {
-    background: rgba(252, 108, 63, 0.7);
+    background: rgba(252, 252, 252, 0.7);
     height: 100%;
     left: 0;
     opacity: 0;
